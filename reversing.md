@@ -20,7 +20,7 @@ return 0;
 ```
 
 
-DAT_140003000, DAT_140003020 확인 후 
+DAT_140003000, DAT_140003020 확인하고 역연산
 
 
 ```python
@@ -52,6 +52,7 @@ print(result)
 
 ```
 
+`Replac3_the_w0rld`
 
 
 ## chall7
