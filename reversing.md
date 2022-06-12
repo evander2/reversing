@@ -57,6 +57,45 @@ print(result)
 
 ## chall7
 
+```C
+byte bVar1;
+uint local_18;
+  
+local_18 = 0;
+while( true ) {
+    if (0x1e < local_18) {
+      return 1;
+    }
+    bVar1 = (byte)local_18 & 7;
+    if (((byte)(*(byte *)(param_1 + (int)local_18) << bVar1 |
+               *(byte *)(param_1 + (int)local_18) >> 8 - bVar1) ^ local_18) !=
+        (uint)(byte)(&DAT_140003000)[(int)local_18]) break;
+    local_18 = local_18 + 1;
+}
+return 0;
+```
+
+
+```python
+
+flag = [0x52, 0xDF, 0xB3, 0x60, 0xF1, 0x8B, 0x1C, 0xB5, 0x57, 0xD1, 0x9F, 0x38, 0x4B, 0x29, 0xD9, 0x26, 
+0x7F, 0xC9, 0xA3, 0xE9, 0x53, 0x18, 0x4F, 0xB8, 0x6A, 0xCB, 0x87, 0x58, 0x5B, 0x39, 0x1E, 0x00]
+
+j = 0;
+
+for i in range(0, 32):
+    if j == 8:
+        j=j-8
+    fx[i]=i^ buf[i];
+    tmp1 = fx[i] >> j;
+    tmp2 = fx[i] << (8 - j);
+    input[i] = tmp1 + tmp2;
+    result += input(i)
+    j=j+1
+    
+print(result)
+
+```
 
 
 
