@@ -282,6 +282,29 @@ print(result)
 ## ransome
 
 
+```C
+uVar1 = ftell(_File);
+_DstBuf = malloc((ulonglong)uVar1);
+srand(0x1234)
+for (local_c = 0; local_c < uVar1; local_c = local_c + 1) {
+    iVar2 = rand();
+    iVar3 = rand();
+    iVar4 = rand();
+    *(byte *)((longlong)(int)local_c + (longlong)_DstBuf) =
+         (byte)iVar4 ^ ((char)iVar2 + *(char *)((longlong)(int)local_c + (longlong)_DstBuf)) - (char)iVar3;
+ }
+
+```
+암호화 과정을 보면 srand() 함수의 seed가 0x1234로 일정하므로 rand 함수의 값도 일정하게 나온다는 사실을 알 수 있다. 그러므로 v2=v3=v4  
+x = v ^ ( v + x) - v  
+(v+x)^(v+x) = v = 0  
+x = x 라는 사실을 알 수 있다.  
+따라서 암호화 과정이 없으므로 원본 파일을 암호 파일과 같다.  
+
+
+
+
+
 
 
 
