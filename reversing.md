@@ -252,7 +252,8 @@ puts("wrong flag");
 getch();
 ```
 
-input의 길이는 27이고, 역연산을 통해 flag를 구할 수 있다.
+input의 길이는 27이고, 0부터 11까지는 enc1 암호화, 12부터 26까지 enc2 방식으로 암호화한 뒤 table과 비교하는 로직을 수행한다.
+DAT_00404000, rsbox 를 찾고 로직을 복호화한 뒤 table과 비교하여 값을 얻을 수 있을 것으로 보인다.
 
 
 ```python
@@ -260,10 +261,9 @@ input의 길이는 27이고, 역연산을 통해 flag를 구할 수 있다.
 table = [0x3a, 0xc0, 0x3c, 0xcf, 0xfb, 0x54, 0x12, 0xcf, 0x12, 0x7e, 0xc5, 0x31, 0xb4, 0xdc, 0x47, 0x27, 
 0x59, 0xf0, 0xdc, 0x47, 0xdf, 0xb4, 0xb4, 0x59, 0xdc, 0x9c, 0x11]
 
-
 result = ''
 
-for i in range(0, len(table)):
+for i in table:
     result += chr(i)
     
 print(result)
@@ -272,9 +272,7 @@ print(result)
 
 ` `
 
-
-` `
-
+로직을 이해하지 못해서 암호 복호화를 어떻게 하는지 잘 모르겠다...ㅜㅜ
 
 
 
