@@ -20,7 +20,7 @@ return 0;
 ```
 
 
-DAT_140003000, DAT_140003020 확인하고 역연산
+DAT_140003000, DAT_140003020 확인하고 역연산한다.
 
 
 ```python
@@ -75,30 +75,35 @@ while( true ) {
 return 0;
 ```
 
+회전 연산임을 알 수 있고, shift와 carry bit을 이용해 rolfunction 함수를 구현할 수 다. 주어진 조건이 맞을 경우 result에 더하여 flag를 구할 수 있다.
 
 ```python
 
+def rolfunction(x, n):
+    shift = x << n
+    shift &= 255
+    carry = x >> 8 - n
+    return shift | carry
+
+
 flag = [0x52, 0xDF, 0xB3, 0x60, 0xF1, 0x8B, 0x1C, 0xB5, 0x57, 0xD1, 0x9F, 0x38, 0x4B, 0x29, 0xD9, 0x26, 
-0x7F, 0xC9, 0xA3, 0xE9, 0x53, 0x18, 0x4F, 0xB8, 0x6A, 0xCB, 0x87, 0x58, 0x5B, 0x39, 0x1E, 0x00]
+0x7F, 0xC9, 0xA3, 0xE9, 0x53, 0x18, 0x4F, 0xB8, 0x6A, 0xCB, 0x87, 0x58, 0x5B, 0x39, 0x1E]
 
-j = 0;
+result = ''
 
-for i in range(0, 32):
-    if j == 8:
-        j=j-8
-    fx[i]=i^ buf[i];
-    tmp1 = fx[i] >> j;
-    tmp2 = fx[i] << (8 - j);
-    input[i] = tmp1 + tmp2;
-    result += input(i)
-    j=j+1
-    
+for i in range(0, 31):
+    for j in range(33, 128):
+        if rolfunction(j, (i & 7))^i == flag[i]:
+            result += chr(j)
+            break
+
+
 print(result)
+
 
 ```
 
-
-
+`Roll_the_left!_Roll_the_right!`
 
 
 
