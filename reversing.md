@@ -228,7 +228,68 @@ out[7]의 값이 in[0]의 값이고, 뺄셈 계산시 1바이트 연산을 해�
 ## easyarray
 
 
+```C
+puVar4 = local_88;
+for (lVar3 = 0xc; lVar3 != 0; lVar3 = lVar3 + -1) {
+    *puVar4 = 0;
+    puVar4 = puVar4 + 1;
+}
+*(undefined4 *)puVar4 = 0;
+printf("input:",(undefined4 *)((longlong)puVar4 + 4));
+scanf("%s");
+lVar3 = mystrlen((char *)local_88);
+if ((int)lVar3 != 0x1b) {
+    puts("wrong input length");
+    getch();
+    exit(0);
+}
+for (local_1c = 0; local_1c < 0xc; local_1c = local_1c + 1) {
+    uVar1 = enc1(*(byte *)((longlong)local_88 + (longlong)local_1c));
+    *(char *)((longlong)local_88 + (longlong)local_1c) = (char)uVar1;
+}
+for (local_1c = 0xc; local_1c < 0x1b; local_1c = local_1c + 1) {
+    uVar2 = enc2((uint)*(byte *)((longlong)local_88 + (longlong)local_1c));
+    *(char *)((longlong)local_88 + (longlong)local_1c) = (char)uVar2;
+}
+local_1c = 0;
+while( true ) {
+    if (0x1a < local_1c) {
+      puts("correct! input is your flag");
+      getch();
+      return 0;
+    }
+    if ((uint)*(byte *)((longlong)local_88 + (longlong)local_1c) !=
+        *(uint *)(&table + (longlong)local_1c * 4)) break;
+    local_1c = local_1c + 1;
+}
+puts("wrong flag");
+getch();
+```
+
+input의 길이는 27이고, 
+
+```C
+
+
+
+```
+
+
+
+` `
+
+
 
 
 
 ## ransome
+
+
+
+
+
+
+
+
+
+
