@@ -229,12 +229,6 @@ out[7]의 값이 in[0]의 값이고, 뺄셈 계산시 1바이트 연산을 해�
 
 
 ```C
-puVar4 = local_88;
-for (lVar3 = 0xc; lVar3 != 0; lVar3 = lVar3 + -1) {
-    *puVar4 = 0;
-    puVar4 = puVar4 + 1;
-}
-*(undefined4 *)puVar4 = 0;
 printf("input:",(undefined4 *)((longlong)puVar4 + 4));
 scanf("%s");
 lVar3 = mystrlen((char *)local_88);
@@ -242,14 +236,6 @@ if ((int)lVar3 != 0x1b) {
     puts("wrong input length");
     getch();
     exit(0);
-}
-for (local_1c = 0; local_1c < 0xc; local_1c = local_1c + 1) {
-    uVar1 = enc1(*(byte *)((longlong)local_88 + (longlong)local_1c));
-    *(char *)((longlong)local_88 + (longlong)local_1c) = (char)uVar1;
-}
-for (local_1c = 0xc; local_1c < 0x1b; local_1c = local_1c + 1) {
-    uVar2 = enc2((uint)*(byte *)((longlong)local_88 + (longlong)local_1c));
-    *(char *)((longlong)local_88 + (longlong)local_1c) = (char)uVar2;
 }
 local_1c = 0;
 while( true ) {
@@ -266,14 +252,25 @@ puts("wrong flag");
 getch();
 ```
 
-input의 길이는 27이고, 
-
-```C
+input의 길이는 27이고, 역연산을 통해 flag를 구할 수 있다.
 
 
+```python
+
+table = [0x3a, 0xc0, 0x3c, 0xcf, 0xfb, 0x54, 0x12, 0xcf, 0x12, 0x7e, 0xc5, 0x31, 0xb4, 0xdc, 0x47, 0x27, 
+0x59, 0xf0, 0xdc, 0x47, 0xdf, 0xb4, 0xb4, 0x59, 0xdc, 0x9c, 0x11]
+
+
+result = ''
+
+for i in range(0, len(table)):
+    result += chr(i)
+    
+print(result)
 
 ```
 
+` `
 
 
 ` `
